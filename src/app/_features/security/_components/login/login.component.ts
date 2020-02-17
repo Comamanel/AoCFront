@@ -24,13 +24,14 @@ export class LoginComponent implements OnInit {
   login(){
     let login: UserLoginModel;
     login = this.loginForm.value;
-    console.log(login);
     this.securityService.login(login).subscribe(
       (token) => {
-        localStorage.setItem('Token', token);
+        console.log(token);
+        localStorage.setItem('Token', token.token);
         //TODO : toastrservice et redirection
       },
       (error) => {
+        console.log(error);
         //TODO : toastrservice pour dire "vtff"
       }
     );

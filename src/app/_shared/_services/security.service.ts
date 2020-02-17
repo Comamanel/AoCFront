@@ -11,8 +11,8 @@ export class SecurityService {
 
   constructor(private httpClient: HttpClient) { }
 
-  login(model: UserLoginModel): Observable<string>{
-    return this.httpClient.post<string>(environment.apiEndPoint + "security/login", model);
+  login(model: UserLoginModel): Observable<any>{
+    return this.httpClient.post<any>(environment.apiEndPoint + "security/login", model);
   }
 
   logout(){
