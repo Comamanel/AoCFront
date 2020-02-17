@@ -26,8 +26,7 @@ export class LoginComponent implements OnInit {
     login = this.loginForm.value;
     this.securityService.login(login).subscribe(
       (token) => {
-        console.log(token);
-        localStorage.setItem('Token', token.token);
+        localStorage.setItem('TOKEN', token.token);
         //TODO : toastrservice et redirection
       },
       (error) => {
