@@ -4,10 +4,10 @@
     </nb-card-header>
     <nb-card-body>
         <div class="row">
-            <div class="col-md-6">
+            <div class="hcaracs">
                 <nb-card>
                     <nb-card-header>
-                        <h3>Truc à remplacer</h3>
+                        <h3>Human caracteristics</h3>
                     </nb-card-header>
                     <nb-card-body>
                         <nb-list>
@@ -27,14 +27,35 @@
                     </nb-card-body>
                 </nb-card>
             </div>
-            <div class="col-md-6">
+            <div class="cyclistCaracs">
                 <nb-card>
                     <nb-card-header>
-                        <h1 style="color:red">INSTALLER BOOTSTRAP MERCI</h1>
-                        <h2>Next : l'affichage des caracs</h2>
+                        <h3>Cyclist caracteristics</h3>
                     </nb-card-header>
                     <nb-card-body>
+                        <nb-list>
+                            <nb-list-item *ngFor="let carac of cyclist.skillSetList">
+                                <div class="caracLabel">{{carac.skill.label}} </div>
+                                <div>{{carac.value}}</div>
+                            </nb-list-item>
+                        </nb-list>
+                    </nb-card-body>
+                    <nb-card-footer>
                         
+                    </nb-card-footer>
+                </nb-card>
+            </div>
+            <div class="history">
+                <nb-card>
+                    <nb-card-header>
+                        <h3>Last Races</h3>
+                    </nb-card-header>
+                    <nb-card-body>
+                        <nb-list>
+                            <nb-list-item>
+                                <h2>TO BE IMPLEMENTED</h2>
+                            </nb-list-item>
+                        </nb-list>
                     </nb-card-body>
                     <nb-card-footer>
                         

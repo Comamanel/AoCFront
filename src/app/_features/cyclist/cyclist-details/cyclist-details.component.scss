@@ -2,3 +2,25 @@
     width:100%;
     justify-content: space-between;
 }
+.row div{
+    float: left;
+}
+
+.hcaracs{
+    width: 20%;
+    min-width: fit-content;
+    margin-right: 3rem;
+}
+
+.cyclistCaracs{
+    width:25%;
+    margin-right: 3rem;
+}
+
+.history{
+    width:45%;
+}
+
+.caracLabel{
+    width: 40rem;
+}
