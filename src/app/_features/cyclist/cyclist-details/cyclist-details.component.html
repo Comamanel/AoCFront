@@ -36,7 +36,7 @@
                         <nb-list>
                             <nb-list-item *ngFor="let carac of cyclist.skillSetList">
                                 <div class="caracLabel">{{carac.skill.label}} </div>
-                                <div>{{carac.value}}</div>
+                                <div [class]="carac.value | caracteristicColor" >{{carac.value}}</div>
                             </nb-list-item>
                         </nb-list>
                     </nb-card-body>
