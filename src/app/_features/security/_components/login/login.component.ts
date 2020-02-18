@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { UserLoginModel } from '../../_models/user-login-model';
+import { UserLoginModel } from 'src/app/_models/user-login-model';
 import { SecurityService } from 'src/app/_shared/_services/security.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,9 +13,14 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
 
-  constructor(private securityService: SecurityService) { }
+  constructor(
+    private securityService: SecurityService,
+    private router: Router
+    ) { }
 
   ngOnInit(): void {
+    if(localStorage.getItem('TOKEN') != null)
+      this.router.navigateByUrl('/home');
     this.loginForm=new FormGroup({
       'username': new FormControl(null, Validators.required),
       'password': new FormControl(null, Validators.required)
@@ -24,15 +30,17 @@ export class LoginComponent implements OnInit {
   login(){
     let login: UserLoginModel;
     login = this.loginForm.value;
-    this.securityService.login(login).subscribe(
-      (token) => {
-        localStorage.setItem('TOKEN', token.token);
-        //TODO : toastrservice et redirection
+    this.securityService.login(login);
+    this.securityService.context$.subscribe(
+      (a) =>{
+        this.router.navigateByUrl('/cyclist/details');
+        //TODO : toastrservice
       },
-      (error) => {
-        console.log(error);
+      () => {
         //TODO : toastrservice pour dire "vtff"
-      }
+
+      },
+      () => {},
     );
   }
 

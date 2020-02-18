@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { CyclistListModel } from 'src/app/_models/cyclist-list-model';
 
 @Component({
   selector: 'app-cyclist',
@@ -6,6 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cyclist.component.scss']
 })
 export class CyclistComponent implements OnInit {
+  cyclist: CyclistListModel;
+
+
+  @Input() public set setCyclist(cyclist: CyclistListModel){
+    this.cyclist = cyclist;
+  }
 
   constructor() { }
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NbMenuItem } from '@nebular/theme';
+import { SecurityService } from 'src/app/_shared/_services/security.service';
 
 @Component({
   selector: 'app-nav',
@@ -8,32 +9,73 @@ import { NbMenuItem } from '@nebular/theme';
 })
 export class NavComponent implements OnInit {
 
-  listItems: NbMenuItem[];
+  _listItems: NbMenuItem[];
 
-  constructor() { }
+  get listItems(): NbMenuItem[]{
+    return this._listItems;
+  }
+
+  constructor(private tokenService: SecurityService) { }
 
   ngOnInit(): void {
-    this.listItems=[
-        { title: 'Coureur', children: [
-          { title: 'Details', link: '/cyclist/details' },
-          { title: 'Entrainement', link: '/cyclist/training' },
-          { title: 'Inscriptions', link: '/cyclist/registrations' }
-        ]},
-        { title: 'Management', children: [
-          { title: 'Materiel', link: '/management/equipment'},
-          { title: 'Staff', link: '/management/staff'}
-        ]},
-        { title: 'Courses', children: [
-          { title: 'Resultats', link: '/races/results' },
-          { title: 'Simulations', link: '/races/simulation' }
-        ]},
-        { title: 'Register', link: '/security/register' },
-        { title: 'Login', link: '/security/login' },
-        { title: 'Logout', link: '/security/logout' },
+    this.tokenService.refresh();
+    this._listItems=[
+      { title: 'Courses', children: [
+        { title: 'Resultats', link: '/races/results', }
+      ]},
+      { title: 'Logout', link: '/security/logout', },
     ];
+    this.tokenService.context$.subscribe(x => {
+      if(x != null){
+        if(x['roles'].includes('ROLE_ADMIN')){
+              this._listItems = [
+                { title: 'Coureur', children: [
+                  { title: 'Details', link: '/cyclist/details' },
+                  { title: 'Entrainement', link: '/cyclist/training' },
+                  { title: 'Inscriptions', link: '/cyclist/registrations' }
+                ]},
+                { title: 'Management', children: [
+                  { title: 'Materiel', link: '/management/equipment' },
+                  { title: 'Staff', link: '/management/staff' }
+                ]},
+                { title: 'Courses', children: [
+                  { title: 'Resultats', link: '/races/results' },
+                  { title: 'Simulations', link: '/races/simulation' }
+                ]},
+                { title: 'Admin Panel', link: '/admin' },
+                { title: 'Logout', link: '/security/logout' },
+              ];
 
-    //TO DO: changer le contenu de la navbar selon connecté ou pas, en admin ou pas (simulations qui disparaît si pas en admin, 
-    //      tout sauf resultats qui disparaît si pas connecté, login et register remplacés par logout si connecté et inversément) 
+        }
+        else{
+          this._listItems = [
+            { title: 'Coureur', children: [
+              { title: 'Details', link: '/cyclist/details' },
+              { title: 'Entrainement', link: '/cyclist/training' },
+              { title: 'Inscriptions', link: '/cyclist/registrations' }
+            ]},
+            { title: 'Management', children: [
+              { title: 'Materiel', link: '/management/equipment' },
+              { title: 'Staff', link: '/management/staff' }
+            ]},
+            { title: 'Courses', children: [
+              { title: 'Resultats', link: '/races/results' }
+            ]},
+            { title: 'Logout', link: '/security/logout' },
+          ];
+        }
+      }
+      else{
+        this._listItems = [
+          { title: 'Courses', children: [
+            { title: 'Resultats', link: '/races/results', }
+          ]},
+          { title: 'Register', link: '/security/register' },
+          { title: 'Login', link: '/security/login', },
+        ];
+      }
+    });
   }
+  
 
 }

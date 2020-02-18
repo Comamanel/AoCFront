@@ -1,4 +1,5 @@
-interface CyclistListModel {
+export interface CyclistListModel {
+  id: number;
   firstName: string;
   lastName: string;
   country: string;

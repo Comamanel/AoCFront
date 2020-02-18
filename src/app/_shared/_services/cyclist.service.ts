@@ -1,20 +1,32 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { CyclistListModel } from 'src/app/_models/cyclist-list-model';
+import { UserListModel } from 'src/app/_models/user-list-model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CyclistService {
 
-  constructor(private httpClient: HttpClient) { }
+  private _cyclists$: BehaviorSubject<CyclistListModel[]>;
+  private _user: UserListModel;
 
-  getByUser(model: UserListModel): Observable<CyclistListModel>{
-    return this.httpClient.get<CyclistListModel>(environment.apiEndPoint + 'cyclist/ByUser/' + model.id);
+  public get cyclists$(): Observable<CyclistListModel[]>{
+    return this._cyclists$.asObservable();
   }
 
-  postByUser(model: UserListModel): Observable<CyclistListModel>{
-    return this.httpClient.post<CyclistListModel>(environment.apiEndPoint + 'cyclist/ByUser', model);
+  constructor(private httpClient: HttpClient) { 
+    this._cyclists$ = new BehaviorSubject<CyclistListModel[]>([]);
+  }
+
+  refresh(){
+    return this.httpClient.post<CyclistListModel>(environment.apiEndPoint + 'cyclist/ByUser', this._user);
+  }
+
+  setUser(model: UserListModel){
+    this._user = model;
+    this.refresh();
   }
 }

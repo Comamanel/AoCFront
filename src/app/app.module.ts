@@ -8,12 +8,14 @@ import { NbThemeModule, NbLayoutModule, NbActionsModule, NbCardModule, NbIconMod
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { NavComponent } from './_core/nav/nav.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
+import { HomeComponent } from './_shared/_components/home/home.component'
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavComponent
+    NavComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
