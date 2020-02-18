@@ -9,7 +9,8 @@ import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { NavComponent } from './_core/nav/nav.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { HomeComponent } from './_shared/_components/home/home.component'
+import { SharedModule } from './shared/shared.module';
+import { HomeComponent } from './_core/home/home.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { HomeComponent } from './_shared/_components/home/home.component'
     NbMenuModule.forRoot(),
     NbSidebarModule.forRoot(),
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -9,7 +9,7 @@ export interface CyclistListModel {
   skillSetList: SkillSetList[];
 }
 
-interface SkillSetList {
+export interface SkillSetList {
   skill: Skill;
   value: number;
 }
@@ -18,7 +18,7 @@ interface Skill {
   label: string;
 }
 
-interface Age {
+export interface Age {
   years: number;
   month: number;
   days: number;

@@ -11,18 +11,36 @@ import { UserListModel } from 'src/app/_models/user-list-model';
 export class CyclistService {
 
   private _cyclists$: BehaviorSubject<CyclistListModel[]>;
+  private _cyclist$: BehaviorSubject<CyclistListModel>;
   private _user: UserListModel;
 
   public get cyclists$(): Observable<CyclistListModel[]>{
     return this._cyclists$.asObservable();
   }
 
+  public get cyclist$(): BehaviorSubject<CyclistListModel>{
+    return this._cyclist$;
+  }
+
+  public set cyclist$(cyclist: BehaviorSubject<CyclistListModel>){
+    this._cyclist$ = cyclist;
+  }
+
+
   constructor(private httpClient: HttpClient) { 
     this._cyclists$ = new BehaviorSubject<CyclistListModel[]>([]);
+    this.cyclist$ = new BehaviorSubject<CyclistListModel>(null);
   }
 
   refresh(){
-    return this.httpClient.post<CyclistListModel>(environment.apiEndPoint + 'cyclist/ByUser', this._user);
+      this.httpClient.post<CyclistListModel[]>(environment.apiEndPoint + 'cyclist/ByUser', this._user)
+      .subscribe((c) => {
+        this._cyclists$.next(c);
+      });
+  }
+
+  refreshCyclist(){
+
   }
 
   setUser(model: UserListModel){

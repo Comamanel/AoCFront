@@ -5,8 +5,8 @@ import { SecurityComponent } from './security.component';
 import { LoginComponent } from './_components/login/login.component';
 import { RegisterComponent } from './_components/register/register.component';
 import { LogoutComponent } from './_components/logout/logout.component';
-import { IsConnectedGuard } from 'src/app/_shared/_guards/is-connected.guard';
-import { IsNotConnectedGuard } from 'src/app/_shared/_guards/is-not-connected.guard';
+import { IsNotConnectedGuard } from 'src/app/shared/_guards/is-not-connected.guard';
+import { IsConnectedGuard } from 'src/app/shared/_guards/is-connected.guard';
 
 const routes: Routes = [
   { path: '', component: SecurityComponent },

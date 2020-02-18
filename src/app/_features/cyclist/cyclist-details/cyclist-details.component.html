@@ -1,1 +1,50 @@
-<p>details works!</p>
+<nb-card>
+    <nb-card-header>
+    <h1>{{cyclist.firstName + ' ' + cyclist.lastName | titlecase}}</h1>
+    </nb-card-header>
+    <nb-card-body>
+        <div class="row">
+            <div class="col-md-6">
+                <nb-card>
+                    <nb-card-header>
+                        <h3>Truc à remplacer</h3>
+                    </nb-card-header>
+                    <nb-card-body>
+                        <nb-list>
+                            <nb-list-item>
+                                Age : {{cyclist.age | ageFormatter}}
+                            </nb-list-item>
+                            <nb-list-item>
+                                Weight : {{cyclist.weight}} kg
+                            </nb-list-item>
+                            <nb-list-item>
+                                Height : {{cyclist.height}} m
+                            </nb-list-item>
+                            <nb-list-item>
+                                Country : {{cyclist.country}}
+                            </nb-list-item>
+                        </nb-list>
+                    </nb-card-body>
+                </nb-card>
+            </div>
+            <div class="col-md-6">
+                <nb-card>
+                    <nb-card-header>
+                        <h1 style="color:red">INSTALLER BOOTSTRAP MERCI</h1>
+                        <h2>Next : l'affichage des caracs</h2>
+                    </nb-card-header>
+                    <nb-card-body>
+                        
+                    </nb-card-body>
+                    <nb-card-footer>
+                        
+                    </nb-card-footer>
+                </nb-card>
+            </div>
+        </div>
+        
+    </nb-card-body>
+    <nb-card-footer>
+        
+    </nb-card-footer>
+</nb-card>

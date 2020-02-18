@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { NavComponent } from 'src/app/_core/nav/nav.component';
-import { SecurityService } from 'src/app/_shared/_services/security.service';
+import { SecurityService } from 'src/app/shared/_services/security.service';
 
 @Component({
   selector: 'app-logout',

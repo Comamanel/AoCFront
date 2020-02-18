@@ -5,8 +5,8 @@
   <!-- <button nbButton (click)="click()" ></button> -->
   <nb-actions>
     <nb-action>
-      <nb-select [placeholder]="selectedCyclist.firstName+ ' ' + selectedCyclist.lastName" >
-      <nb-option *ngFor="let cyclist of userCyclists" [value]="cyclist.id">{{cyclist.firstName + ' ' + cyclist.lastName}}</nb-option>
+      <nb-select [placeholder]="selectedCyclist.firstName+ ' ' + selectedCyclist.lastName" (selectedChange)="changeCyclist($event)" >
+      <nb-option *ngFor="let cyclist of userCyclists" [value]="cyclist">{{cyclist.firstName + ' ' + cyclist.lastName}}</nb-option>
       </nb-select>
     </nb-action>
   </nb-actions>
