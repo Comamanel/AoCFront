@@ -8,6 +8,7 @@ import { NbCardModule, NbInputModule, NbButtonModule } from '@nebular/theme';
 import { RegisterComponent } from './_components/register/register.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { LogoutComponent } from './_components/logout/logout.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { LogoutComponent } from './_components/logout/logout.component';
     FormsModule,
     ReactiveFormsModule,
     NbInputModule,
-    NbButtonModule
+    NbButtonModule, 
+    SharedModule
   ]
 })
 export class SecurityModule { }

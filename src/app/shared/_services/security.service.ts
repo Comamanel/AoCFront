@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { UserLoginModel } from 'src/app/_models/user-login-model';
 import { TokenModel } from 'src/app/_models/token-model';
 import * as jwt_decode from 'jwt-decode';
+import { UserRegisterModel } from 'src/app/_models/user-register-model';
 
 @Injectable({
   providedIn: 'root'
@@ -46,7 +47,7 @@ export class SecurityService {
     this._context$.next(null);
   }
 
-  register(){
-
+  register(model: UserRegisterModel): Observable<any>{
+    return this.httpClient.post<any>(environment.apiEndPoint + "security/register", model);
   }
 }

@@ -1,1 +1,31 @@
-<p>register works!</p>
+<nb-card>
+    <nb-card-header>
+        Register
+    </nb-card-header>
+    <nb-card-body>
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <input nbInput type="text" placeholder="Your username" formControlName="username" 
+                [status]="registerForm.get('username') | inputColor" >
+            </div>
+            <div class="form-group">
+                <input nbInput type="email" placeholder="Your email adress..." formControlName="email" [status]="registerForm.get('email') | inputColor" >
+            </div>
+            <div class="form-group">
+                <input nbInput type="password" placeholder="Your password" formControlName="password"
+                [status]="registerForm.get('password') | inputColor" >
+            </div>
+            <div class="form-group">
+                <input nbInput type="password" placeholder="Repeat your password" formControlName="confirmPwd"
+                [status]="(registerForm.get('confirmPwd').dirty || registerForm.get('confirmPwd').touched)? 
+                (registerForm.get('confirmPwd').valid && !registerForm.getError('matchError')? 'success' : 'danger'):'primary'">
+            </div>
+            <div class="form-group">
+                <input nbButton type="submit" value="REGISTER" [disabled]="!registerForm.valid" >
+            </div>
+        </form>
+    </nb-card-body>
+    <nb-card-footer>
+
+    </nb-card-footer>
+</nb-card>
