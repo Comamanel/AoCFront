@@ -1,4 +1,5 @@
 import { FormGroup } from '@angular/forms';
+import {ValidateFn} from "codelyzer/walkerFactory/walkerFn";
 
 export class CustomValidators{
     static compare(...args: any){
@@ -8,5 +9,9 @@ export class CustomValidators{
             if(!first||!second) return;
             if(first.value != second.value) return {matchError: 'Not match'};
         }
+    }
+
+    static maxPointSkill(...args: any) {
+
     }
 }

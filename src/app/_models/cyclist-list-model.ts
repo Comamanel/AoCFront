@@ -1,12 +1,15 @@
+import {UserListModel} from "./user-list-model";
+
 export interface CyclistListModel {
-  id: number;
+  id?: number;
   firstName: string;
   lastName: string;
   country: string;
   weight: number;
   height: number;
-  age: Age;
-  skillSetList: SkillSetList[];
+  age?: Age;
+  skillSetList?: SkillSetList[];
+  user?: number;
 }
 
 export interface SkillSetList {
