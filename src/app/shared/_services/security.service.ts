@@ -6,6 +6,7 @@ import { UserLoginModel } from 'src/app/_models/user-login-model';
 import { TokenModel } from 'src/app/_models/token-model';
 import * as jwt_decode from 'jwt-decode';
 import { UserRegisterModel } from 'src/app/_models/user-register-model';
+import { CyclistService } from './cyclist.service';
 
 @Injectable({
   providedIn: 'root'
@@ -23,15 +24,19 @@ export class SecurityService {
         this._context$.next(jwt_decode(token));
       else
         this._context$.next(null); 
+
+      this.cyclistService.setUser({'username': this._context$.value?this._context$.value['sub']:null, 'id': '0'});
+      this.cyclistService.refresh();
    }
 
-  constructor(private httpClient: HttpClient) { 
+  constructor(private httpClient: HttpClient, private cyclistService: CyclistService) { 
     
     this._context$ = new BehaviorSubject<TokenModel>(null);
   }
 
-  login(model: UserLoginModel){
-    this.httpClient.post<any>(environment.apiEndPoint + "security/login", model).subscribe(
+  login(model: UserLoginModel):Observable<any>{
+    return this.httpClient.post<any>(environment.apiEndPoint + "security/login", model);
+    /*.subscribe(
       (response) =>{
         localStorage.setItem('TOKEN', response.token);
         this._context$.next(jwt_decode(response.token));
@@ -39,12 +44,15 @@ export class SecurityService {
       (error) => {
 
       },
-      () => {});
+      () => {
+        this.cyclistService.refresh();
+      });*/
   }
 
   logout(){
     localStorage.removeItem('TOKEN');
     this._context$.next(null);
+    this.cyclistService.refresh();
   }
 
   register(model: UserRegisterModel): Observable<any>{

@@ -7,6 +7,8 @@ import { Age } from 'src/app/_models/cyclist-list-model';
 export class AgeFormatterPipe implements PipeTransform {
 
   transform(value: Age, ...args: any[]): any {
+    if(value == null)
+      return '';
     return value.years + ' years, ' + value.month + ' month and ' + value.days + ' days old.';
   }
  

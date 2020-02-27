@@ -15,26 +15,26 @@ export class NavComponent implements OnInit {
     return this._listItems;
   }
 
-  constructor(private tokenService: SecurityService) { }
+  constructor(private securityService: SecurityService) { }
 
   ngOnInit(): void {
-    this.tokenService.refresh();
+    this.securityService.refresh();
     this._listItems=[
       { title: 'Courses', children: [
         { title: 'Resultats', link: '/races/results', }
       ]},
       { title: 'Logout', link: '/security/logout', },
     ];
-    this.tokenService.context$.subscribe(x => {
+    this.securityService.context$.subscribe(x => {
       if(x != null){
         if(x['roles'].includes('ROLE_ADMIN')){
               this._listItems = [
                 { title: 'Coureur', children: [
                   { title: 'Details', link: '/cyclist/details' },
-                  { title: 'Entrainement', link: '/cyclist/training' },
-                  { title: 'Inscriptions', link: '/cyclist/registrations' }
+                  /*{ title: 'Entrainement', link: '/cyclist/training' },
+                  { title: 'Inscriptions', link: '/cyclist/registrations' }*/
                 ]},
-                { title: 'Management', children: [
+                /*{ title: 'Management', children: [
                   { title: 'Materiel', link: '/management/equipment' },
                   { title: 'Staff', link: '/management/staff' }
                 ]},
@@ -42,7 +42,7 @@ export class NavComponent implements OnInit {
                   { title: 'Resultats', link: '/races/results' },
                   { title: 'Simulations', link: '/races/simulation' }
                 ]},
-                { title: 'Admin Panel', link: '/admin' },
+                { title: 'Admin Panel', link: '/admin' },*/
                 { title: 'Logout', link: '/security/logout' },
               ];
 
@@ -51,16 +51,16 @@ export class NavComponent implements OnInit {
           this._listItems = [
             { title: 'Coureur', children: [
               { title: 'Details', link: '/cyclist/details' },
-              { title: 'Entrainement', link: '/cyclist/training' },
-              { title: 'Inscriptions', link: '/cyclist/registrations' }
+              /*{ title: 'Entrainement', link: '/cyclist/training' },
+              { title: 'Inscriptions', link: '/cyclist/registrations' }*/
             ]},
-            { title: 'Management', children: [
+            /*{ title: 'Management', children: [
               { title: 'Materiel', link: '/management/equipment' },
               { title: 'Staff', link: '/management/staff' }
             ]},
             { title: 'Courses', children: [
               { title: 'Resultats', link: '/races/results' }
-            ]},
+            ]},*/
             { title: 'Logout', link: '/security/logout' },
           ];
         }

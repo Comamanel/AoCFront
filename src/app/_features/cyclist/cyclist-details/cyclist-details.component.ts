@@ -14,9 +14,12 @@ export class CyclistDetailsComponent implements OnInit {
   constructor(private cyclistService: CyclistService) { }
 
   ngOnInit(): void {
+    this.cyclist = { id: 0, firstName: 'No Rider', lastName: 'Selected', country: 'No country', weight: 0, height:0, age:null, skillSetList: null};
+    this.cyclistService.refresh();
     this.cyclistService.cyclist$.subscribe(
       (data) => { 
-        this.cyclist = data;
+        if(data)
+          this.cyclist = data;
       }
     );
   }

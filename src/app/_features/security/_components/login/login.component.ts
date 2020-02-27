@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UserLoginModel } from 'src/app/_models/user-login-model';
 import { Router } from '@angular/router';
 import { SecurityService } from 'src/app/shared/_services/security.service';
+import { CyclistService } from 'src/app/shared/_services/cyclist.service';
 
 @Component({
   selector: 'app-login',
@@ -15,6 +16,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private securityService: SecurityService,
+    private cyclistService: CyclistService,
     private router: Router
     ) { }
 
@@ -30,10 +32,17 @@ export class LoginComponent implements OnInit {
   login(){
     let login: UserLoginModel;
     login = this.loginForm.value;
-    this.securityService.login(login);
+    this.securityService.login(login).subscribe(
+      (token) =>{
+        console.log(token);
+        localStorage.setItem('TOKEN', token.token);
+        this.router.navigateByUrl('/cyclist/details');
+      }
+    );
+    /*this.securityService.refresh();
     this.securityService.context$.subscribe(
       (a) =>{
-        this.router.navigateByUrl('/cyclist/details');
+        this.cyclistService.refresh();
         //TODO : toastrservice
       },
       () => {
@@ -41,7 +50,7 @@ export class LoginComponent implements OnInit {
 
       },
       () => {},
-    );
+    );*/
   }
 
 }

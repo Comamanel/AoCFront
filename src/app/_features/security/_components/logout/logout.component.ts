@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SecurityService } from 'src/app/shared/_services/security.service';
+import { CyclistService } from 'src/app/shared/_services/cyclist.service';
 
 @Component({
   selector: 'app-logout',
@@ -11,11 +12,14 @@ export class LogoutComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private securityService: SecurityService
+    private securityService: SecurityService,
+    private cyclistService: CyclistService
     ) { }
 
   ngOnInit(): void {
     this.securityService.logout();
+    this.securityService.refresh();
+    this.cyclistService.refresh();
     this.securityService.context$.subscribe(
       () =>{
         this.router.navigateByUrl('/cyclist/details');
