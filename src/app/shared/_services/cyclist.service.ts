@@ -40,7 +40,7 @@ export class CyclistService {
 
   register(model: CyclistListModel) {
     model.user = this._user.id;
-    this.httpClient.post<void>(environment.apiEndPoint + 'cyclist/register', model).subscribe();
+    this.httpClient.post<void>(environment.apiEndPoint + 'cyclist/add', model).subscribe();
     // this.refresh();
   }
 
