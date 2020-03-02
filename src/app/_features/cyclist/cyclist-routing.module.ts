@@ -4,12 +4,12 @@ import { Routes, RouterModule } from '@angular/router';
 import { CyclistComponent } from './cyclist.component';
 import { CyclistDetailsComponent } from './cyclist-details/cyclist-details.component';
 import { IsConnectedGuard } from 'src/app/shared/_guards/is-connected.guard';
-import {RegistrationsComponent} from './registrations/registrations.component';
+import { AddCyclistComponent } from './add-cyclist/add-cyclist.component';
 
 const routes: Routes = [
   { path: '', component: CyclistComponent },
   { path: 'details', component: CyclistDetailsComponent, canActivate: [IsConnectedGuard] },
-  { path: 'registrations', component: RegistrationsComponent, canActivate: [IsConnectedGuard] },
+  { path: 'add-cyclist', component: AddCyclistComponent, canActivate: [IsConnectedGuard] },
 ];
 
 @NgModule({

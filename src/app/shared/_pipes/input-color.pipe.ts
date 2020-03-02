@@ -8,7 +8,6 @@ import { AbstractControl } from '@angular/forms';
 export class InputColorPipe implements PipeTransform {
 
   transform(value: AbstractControl, ...args: any[]): string {
-    console.log("coucou");
     if(value.dirty || value.touched){
       if(value.valid)
         return 'success';

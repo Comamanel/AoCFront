@@ -77,7 +77,7 @@ export class AppComponent implements OnInit {
 
   changeCyclist(e) {
     if (e === 'add') {
-      this.router.navigateByUrl('/cyclist/registrations');
+      this.router.navigateByUrl('/cyclist/add-cyclist');
     } else {
       this.selectedCyclist = e;
     }

@@ -25,7 +25,7 @@ export class SecurityService {
       else
         this._context$.next(null); 
 
-      this.cyclistService.setUser({'username': this._context$.value?this._context$.value['sub']:null, 'id': '0'});
+      this.cyclistService.setUser({'username': this._context$.value?this._context$.value['sub']:null, 'id': 0});
       this.cyclistService.refresh();
    }
 

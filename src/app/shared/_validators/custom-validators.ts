@@ -12,6 +12,12 @@ export class CustomValidators{
     }
 
     static maxPointSkill(...args: any) {
-
+        //TODO: finir le validator
+        return (group: FormGroup) =>{
+            let result = 100;
+            console.log("total points set : " + result)
+            if(result < 0) return {matchError: 'Too much points set'};
+            if(result > 0) return {matchError: 'Not enough points set'};
+        }
     }
 }

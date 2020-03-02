@@ -13,12 +13,12 @@ import {
   NbSelectModule, NbButtonModule,
 } from '@nebular/theme';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { RegistrationsComponent } from './registrations/registrations.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import { AddCyclistComponent } from './add-cyclist/add-cyclist.component';
 
 
 @NgModule({
-  declarations: [CyclistComponent, CyclistDetailsComponent, RegistrationsComponent],
+  declarations: [CyclistComponent, CyclistDetailsComponent, AddCyclistComponent],
   imports: [
     CommonModule,
     CyclistRoutingModule,

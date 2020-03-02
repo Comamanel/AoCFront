@@ -4,6 +4,7 @@ import { Observable, BehaviorSubject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { CyclistListModel } from 'src/app/_models/cyclist-list-model';
 import { UserListModel } from 'src/app/_models/user-list-model';
+import { CyclistAddModel } from 'src/app/_models/cyclist-add-model';
 
 @Injectable({
   providedIn: 'root'
@@ -43,8 +44,8 @@ export class CyclistService {
       });
   }
 
-  register(model: CyclistListModel) {
-    model.user = this._user.id;
+  register(model: CyclistAddModel) {
+    model.user = this._user.username;
     this.httpClient.post<void>(environment.apiEndPoint + 'cyclist/add', model).subscribe();
     // this.refresh();
   }
