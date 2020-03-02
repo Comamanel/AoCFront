@@ -30,19 +30,23 @@ export class CyclistService {
     this._cyclist$ = cyclist;
   }
 
-
-  constructor(private httpClient: HttpClient) { 
+  constructor(private httpClient: HttpClient) {
     this._cyclists$ = new BehaviorSubject<CyclistListModel[]>([]);
     this.cyclist$ = new BehaviorSubject<CyclistListModel>(null);
   }
 
-  refresh(){
+  refresh() {
     if(this._user != null)
       this.httpClient.post<CyclistListModel[]>(environment.apiEndPoint + 'cyclist/ByUser', this._user)
       .subscribe((c) => {
         this.cyclists$.next(c);
       });
-  
+  }
+
+  register(model: CyclistListModel) {
+    model.user = this._user.id;
+    this.httpClient.post<void>(environment.apiEndPoint + 'cyclist/add', model).subscribe();
+    // this.refresh();
   }
 
   setUser(model: UserListModel){

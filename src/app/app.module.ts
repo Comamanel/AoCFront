@@ -4,7 +4,23 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NbThemeModule, NbLayoutModule, NbActionsModule, NbCardModule, NbIconModule, NbListModule, NbCheckboxModule, NbSelectModule, NbInputModule, NbButtonModule, NbToastrModule, NbSidebarModule, NbContextMenuModule, NbMenuModule } from '@nebular/theme';
+import {
+  NbThemeModule,
+  NbLayoutModule,
+  NbActionsModule,
+  NbCardModule,
+  NbIconModule,
+  NbListModule,
+  NbCheckboxModule,
+  NbSelectModule,
+  NbInputModule,
+  NbButtonModule,
+  NbToastrModule,
+  NbSidebarModule,
+  NbContextMenuModule,
+  NbMenuModule,
+  NbDatepickerModule
+} from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { NavComponent } from './_core/nav/nav.component';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -32,7 +48,7 @@ import { HomeComponent } from './_core/home/home.component';
     NbCheckboxModule,
     NbSelectModule,
     NbInputModule,
-    NbButtonModule, 
+    NbButtonModule,
     NbToastrModule,
     NbSidebarModule,
     NbContextMenuModule,
@@ -40,7 +56,8 @@ import { HomeComponent } from './_core/home/home.component';
     NbSidebarModule.forRoot(),
     ReactiveFormsModule,
     HttpClientModule,
-    SharedModule
+    SharedModule,
+    NbDatepickerModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]
