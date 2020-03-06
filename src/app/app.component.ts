@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import * as jwt_decode from 'jwt-decode';
-import {CyclistListModel} from './_models/cyclist-list-model';
 import {NbMenuItem} from '@nebular/theme';
-import {CyclistService} from './shared/_services/cyclist.service';
 import {Router} from "@angular/router";
+import { CyclistListModel } from './_core/_models/cyclist-list-model';
+import { CyclistService } from './_core/_services/cyclist.service';
 
 @Component({
   selector: 'app-root',

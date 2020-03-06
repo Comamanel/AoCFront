@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NbMenuItem } from '@nebular/theme';
-import { SecurityService } from 'src/app/shared/_services/security.service';
+import { SecurityService } from '../_services/security.service';
 
 @Component({
   selector: 'app-nav',

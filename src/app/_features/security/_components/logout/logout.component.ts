@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { SecurityService } from 'src/app/shared/_services/security.service';
-import { CyclistService } from 'src/app/shared/_services/cyclist.service';
+import { SecurityService } from 'src/app/_core/_services/security.service';
+import { CyclistService } from 'src/app/_core/_services/cyclist.service';
 
 @Component({
   selector: 'app-logout',

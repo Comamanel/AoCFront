@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './_core/home/home.component';
-import { IsConnectedGuard } from './shared/_guards/is-connected.guard';
-import { IsAdminGuard } from './shared/_guards/is-admin.guard';
+import { IsConnectedGuard } from './_core/_guards/is-connected.guard';
+import { IsAdminGuard } from './_core/_guards/is-admin.guard';
 
 
 const routes: Routes = [

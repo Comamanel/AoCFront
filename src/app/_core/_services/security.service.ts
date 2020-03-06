@@ -2,11 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { UserLoginModel } from 'src/app/_models/user-login-model';
-import { TokenModel } from 'src/app/_models/token-model';
 import * as jwt_decode from 'jwt-decode';
-import { UserRegisterModel } from 'src/app/_models/user-register-model';
 import { CyclistService } from './cyclist.service';
+import { TokenModel } from '../_models/token-model';
+import { UserLoginModel } from '../_models/user-login-model';
+import { UserRegisterModel } from '../_models/user-register-model';
 
 @Injectable({
   providedIn: 'root'

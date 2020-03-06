@@ -3,8 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { CyclistComponent } from './cyclist.component';
 import { CyclistDetailsComponent } from './cyclist-details/cyclist-details.component';
-import { IsConnectedGuard } from 'src/app/shared/_guards/is-connected.guard';
 import { AddCyclistComponent } from './add-cyclist/add-cyclist.component';
+import { IsConnectedGuard } from 'src/app/_core/_guards/is-connected.guard';
 
 const routes: Routes = [
   { path: '', component: CyclistComponent },

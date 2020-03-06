@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Age } from 'src/app/_models/cyclist-list-model';
+import { Age } from 'src/app/_core/_models/cyclist-list-model';
 
 @Pipe({
   name: 'ageFormatter'

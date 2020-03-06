@@ -1,9 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators, FormArray, AbstractControl} from "@angular/forms";
-import {CyclistService} from "../../../shared/_services/cyclist.service";
 import * as jwt_decode from 'jwt-decode';
 import {CustomValidators} from "../../../shared/_validators/custom-validators";
-import { SkillSetList } from 'src/app/_models/cyclist-list-model';
+import { CyclistService } from 'src/app/_core/_services/cyclist.service';
 
 @Component({
   selector: 'app-add-cyclist',

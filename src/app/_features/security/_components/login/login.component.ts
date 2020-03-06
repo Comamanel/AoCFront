@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { UserLoginModel } from 'src/app/_models/user-login-model';
 import { Router } from '@angular/router';
-import { SecurityService } from 'src/app/shared/_services/security.service';
-import { CyclistService } from 'src/app/shared/_services/cyclist.service';
+import { SecurityService } from 'src/app/_core/_services/security.service';
+import { CyclistService } from 'src/app/_core/_services/cyclist.service';
+import { UserLoginModel } from 'src/app/_core/_models/user-login-model';
 
 @Component({
   selector: 'app-login',
