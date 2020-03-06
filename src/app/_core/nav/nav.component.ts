@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NbMenuItem } from '@nebular/theme';
-import { SecurityService } from '../_services/security.service';
+import { GlobalService } from '../_services/global.service';
+import * as jwt_decode from 'jwt-decode';
+import { decode } from 'punycode';
 
 @Component({
   selector: 'app-nav',
@@ -15,19 +17,23 @@ export class NavComponent implements OnInit {
     return this._listItems;
   }
 
-  constructor(private securityService: SecurityService) { }
+  constructor(private globalService: GlobalService) { }
 
   ngOnInit(): void {
-    this.securityService.refresh();
+    this.globalService.refresh();
     this._listItems=[
       { title: 'Courses', children: [
         { title: 'Resultats', link: '/races/results', }
       ]},
       { title: 'Logout', link: '/security/logout', },
     ];
-    this.securityService.context$.subscribe(x => {
+    this.globalService.user$.subscribe(x => {
       if(x != null){
-        if(x['roles'].includes('ROLE_ADMIN')){
+        let token = localStorage.getItem('TOKEN');
+        let user = jwt_decode(token);
+        console.log("nav - token décodé");
+        console.log(user);
+        if(user['roles'].includes('ROLE_ADMIN')){
               this._listItems = [
                 { title: 'Coureur', children: [
                   { title: 'Details', link: '/cyclist/details' },

@@ -4,6 +4,7 @@ import {NbMenuItem} from '@nebular/theme';
 import {Router} from "@angular/router";
 import { CyclistListModel } from './_core/_models/cyclist-list-model';
 import { CyclistService } from './_core/_services/cyclist.service';
+import { GlobalService } from './_core/_services/global.service';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,7 @@ import { CyclistService } from './_core/_services/cyclist.service';
 export class AppComponent implements OnInit {
   title = 'AoCFront';
   private _selectedCyclist: CyclistListModel;
-  private _userCyclists: CyclistListModel[];
+   _userCyclists: CyclistListModel[];
   private _listItems: NbMenuItem[];
   private _defaultCyclist: CyclistListModel;
 
@@ -40,46 +41,33 @@ export class AppComponent implements OnInit {
 
   constructor(
     private cyclistService: CyclistService,
+    private globalService: GlobalService,
     private router: Router
   ) {
-
+    
   }
-
+  
   ngOnInit(): void {
+    this.globalService.refresh();
     this._defaultCyclist = {id: 0, firstName: "Choose your", lastName: "cyclist", age: null, country: null, weight: null, height: null, skillSetList: null};
-    this.selectedCyclist = this._defaultCyclist;
-    this.getCyclists();
-
-
-  }
-
-  getCyclists(){
-    this.cyclistService.refresh();
-    let token = localStorage.getItem('TOKEN');
-    this.cyclistService.cyclists$.subscribe((cyclists) => {
-      this.userCyclists = cyclists;
-      if(this.userCyclists.length > 0)
-        this.selectedCyclist = this.userCyclists[0];
-      else
-        this.selectedCyclist = this._defaultCyclist;
+    this._selectedCyclist = this._defaultCyclist;
+    this.globalService.userCyclists$.subscribe(data => {
+      this._userCyclists = data;
+      if(data.length > 0){
+        this._selectedCyclist = data[0];
+      }
+      else{
+        this._selectedCyclist = this._defaultCyclist;
+      }
     });
-    /*if(token != null){
-      let decoded = jwt_decode(token);
-      let username: string;
-      username = decoded['sub'];
-      let cyclists: CyclistListModel[];
-      // todo id non hardcode!!!
-      this.cyclistService.setUser({username: username, id: 1});
-      this.cyclistService.refresh();
-
-    }*/
   }
+
 
   changeCyclist(e) {
     if (e === 'add') {
       this.router.navigateByUrl('/cyclist/add-cyclist');
     } else {
-      this.selectedCyclist = e;
+      this.globalService.selectedCyclist.next(e);
     }
   }
 }

@@ -6,11 +6,11 @@
   <nb-actions>
     <nb-action>
       <nb-select [placeholder]="selectedCyclist.firstName+ ' ' + selectedCyclist.lastName" (selectedChange)="changeCyclist($event)" >
-        <nb-option *ngFor="let cyclist of userCyclists" [value]="cyclist">{{cyclist.firstName + ' ' + cyclist.lastName}}</nb-option>
+        <nb-option *ngFor="let cyclist of _userCyclists" [value]="cyclist">{{cyclist.firstName + ' ' + cyclist.lastName}}</nb-option>
         <nb-option [value]="'add'">Add cyclist</nb-option>
       </nb-select>
     </nb-action>
-  </nb-actions>
+  </nb-actions> 
   </nb-layout-header>
   <nb-sidebar>
     <app-nav></app-nav>

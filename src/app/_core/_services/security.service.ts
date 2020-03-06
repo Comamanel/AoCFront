@@ -51,8 +51,12 @@ export class SecurityService {
 
   logout(){
     localStorage.removeItem('TOKEN');
-    this._context$.next(null);
-    this.cyclistService.refresh();
+    /*this._context$.next(null);
+    this.cyclistService.refresh();*/
+  }
+
+  refreshUser(username: string): Observable<any>{
+    return this.httpClient.post<any>(environment.apiEndPoint + "security/refresh", username);
   }
 
   register(model: UserRegisterModel): Observable<any>{

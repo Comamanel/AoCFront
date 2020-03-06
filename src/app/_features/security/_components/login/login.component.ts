@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { SecurityService } from 'src/app/_core/_services/security.service';
 import { CyclistService } from 'src/app/_core/_services/cyclist.service';
 import { UserLoginModel } from 'src/app/_core/_models/user-login-model';
+import { GlobalService } from 'src/app/_core/_services/global.service';
 
 @Component({
   selector: 'app-login',
@@ -17,6 +18,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private securityService: SecurityService,
     private cyclistService: CyclistService,
+    private globalService: GlobalService,
     private router: Router
     ) { }
 
@@ -32,13 +34,15 @@ export class LoginComponent implements OnInit {
   login(){
     let login: UserLoginModel;
     login = this.loginForm.value;
-    this.securityService.login(login).subscribe(
+    this.globalService.login(login);
+    /*this.securityService.login(login).subscribe(
       (token) =>{
         console.log(token);
         localStorage.setItem('TOKEN', token.token);
+        this.cyclistService.refresh();
         this.router.navigateByUrl('/cyclist/details');
       }
-    );
+    );*/
     /*this.securityService.refresh();
     this.securityService.context$.subscribe(
       (a) =>{

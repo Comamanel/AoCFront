@@ -2,25 +2,21 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { CyclistListModel } from 'src/app/_models/cyclist-list-model';
-import { UserListModel } from 'src/app/_models/user-list-model';
-import { CyclistAddModel } from 'src/app/_models/cyclist-add-model';
+import { CyclistListModel } from '../_models/cyclist-list-model';
+import { UserListModel } from '../_models/user-list-model';
+import { CyclistAddModel } from '../_models/cyclist-add-model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CyclistService {
 
-  private _cyclists$: BehaviorSubject<CyclistListModel[]>;
+  private _context$: BehaviorSubject<CyclistListModel[]>;
   private _cyclist$: BehaviorSubject<CyclistListModel>;
   private _user: UserListModel;
 
-  public get cyclists$(): BehaviorSubject<CyclistListModel[]>{
-    return this._cyclists$;
-  }
-
-  public set cyclists$(cyclists: BehaviorSubject<CyclistListModel[]>){
-    this._cyclists$ = cyclists;
+  public get context$(): Observable<CyclistListModel[]>{
+    return this._context$.asObservable();
   }
 
   public get cyclist$(): BehaviorSubject<CyclistListModel>{
@@ -32,7 +28,7 @@ export class CyclistService {
   }
 
   constructor(private httpClient: HttpClient) {
-    this._cyclists$ = new BehaviorSubject<CyclistListModel[]>([]);
+    this._context$ = new BehaviorSubject<CyclistListModel[]>([]);
     this.cyclist$ = new BehaviorSubject<CyclistListModel>(null);
   }
 
@@ -40,18 +36,17 @@ export class CyclistService {
     if(this._user != null)
       this.httpClient.post<CyclistListModel[]>(environment.apiEndPoint + 'cyclist/ByUser', this._user)
       .subscribe((c) => {
-        this.cyclists$.next(c);
+        this._context$.next(c);
       });
   }
 
   register(model: CyclistAddModel) {
-    model.user = this._user.username;
-    this.httpClient.post<void>(environment.apiEndPoint + 'cyclist/add', model).subscribe();
+    /*model.user = this._user.username;
+    this.httpClient.post<void>(environment.apiEndPoint + 'cyclist/add', model).subscribe();*/
     // this.refresh();
   }
 
   setUser(model: UserListModel){
     this._user = model;
-    this.refresh();
   }
 }
