@@ -27,12 +27,11 @@ export class NavComponent implements OnInit {
       ]},
       { title: 'Logout', link: '/security/logout', },
     ];
+    console.log("coucou2");
     this.globalService.user$.subscribe(x => {
       if(x != null){
         let token = localStorage.getItem('TOKEN');
         let user = jwt_decode(token);
-        console.log("nav - token décodé");
-        console.log(user);
         if(user['roles'].includes('ROLE_ADMIN')){
               this._listItems = [
                 { title: 'Coureur', children: [

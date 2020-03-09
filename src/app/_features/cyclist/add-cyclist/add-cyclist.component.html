@@ -39,6 +39,7 @@
             <h4>You can add a maximum of 100 points in all road caracteristics. Actual points left : {{skillControls}} </h4>
 
               <label class="content">
+                Hills :
                 <input nbInput formControlName="hills" placeholder="Hills" min="10" max="40" type="number" step="5"
                 [status]="(addForm.get('hills').dirty || addForm.get('hills').touched)? 
                 (addForm.get('hills').valid && addForm.getError('matchError')? 'danger': 'success') 
@@ -46,6 +47,7 @@
               </label>
             
               <label class="content">
+                Flat :
                 <input nbInput formControlName="flat" placeholder="Flat" min="10" max="40" type="number" step="5" 
                 [status]="(addForm.get('hills').dirty || addForm.get('hills').touched)? 
                 (addForm.get('hills').valid && addForm.getError('matchError')? 'danger': 'success') 
@@ -53,6 +55,7 @@
               </label>
             
               <label class="content">
+                Mountain :
                 <input nbInput formControlName="mountain" placeholder="Mountain" min="10" max="40" type="number" step="5"
                 [status]="(addForm.get('hills').dirty || addForm.get('hills').touched)? 
                 (addForm.get('hills').valid && addForm.getError('matchError')? 'danger': 'success') 
@@ -60,6 +63,7 @@
               </label>
             
               <label class="content">
+                Cobbles :
                 <input nbInput formControlName="cobbles" placeholder="Cobbles" min="10" max="40" type="number" step="5"
                 [status]="(addForm.get('hills').dirty || addForm.get('hills').touched)? 
                 (addForm.get('hills').valid && addForm.getError('matchError')? 'danger': 'success') 
@@ -67,6 +71,7 @@
               </label>
             
               <label class="content">
+                Downhill :
                 <input nbInput formControlName="downhill" placeholder="Downhills" min="10" max="40" type="number" step="5"
                 [status]="(addForm.get('hills').dirty || addForm.get('hills').touched)? 
                 (addForm.get('hills').valid && addForm.getError('matchError')? 'danger': 'success') 
@@ -74,7 +79,7 @@
               </label>
             
               <label class="content">
-                  Sprint :
+                Sprint :
                 <input nbInput formControlName="sprint" placeholder="Sprint" min="10" max="40" type="number" step="5"
                 [status]="(addForm.get('hills').dirty || addForm.get('hills').touched)? 
                 (addForm.get('hills').valid && addForm.getError('matchError')? 'danger': 'success') 
@@ -82,7 +87,7 @@
               </label>
             
               <label class="content">
-                  Punch : 
+                Punch : 
                 <input nbInput formControlName="punch" placeholder="Punch" min="10" max="40" type="number" step="5"
                 [status]="(addForm.get('hills').dirty || addForm.get('hills').touched)? 
                 (addForm.get('hills').valid && addForm.getError('matchError')? 'danger': 'success') 
@@ -98,67 +103,76 @@
         </nb-card-header>
         <nb-card-body>
             <label class="content">
-                <input nbInput formControlName="balance" placeholder="Balance" min="10" max="40" type="number" step="5"
-                [status]="(addForm.get('hills').dirty || addForm.get('hills').touched)? 
-                (addForm.get('hills').valid && addForm.getError('matchError')? 'danger': 'success') 
-                : 'primary'" >
-              </label>
+              Balance : 
+              <input nbInput formControlName="balance" placeholder="Balance" min="10" max="40" type="number" step="5"
+              [status]="(addForm.get('hills').dirty || addForm.get('hills').touched)? 
+              (addForm.get('hills').valid && addForm.getError('matchError')? 'danger': 'success') 
+              : 'primary'" >
+            </label>
             
-              <label class="content">
-                <input nbInput formControlName="climb" placeholder="Climb" min="10" max="40" type="number" step="5"
-                [status]="(addForm.get('hills').dirty || addForm.get('hills').touched)? 
-                (addForm.get('hills').valid && addForm.getError('matchError')? 'danger': 'success') 
-                : 'primary'" >
-              </label>
-            
-              <label class="content">
-                <input nbInput formControlName="climbrun" placeholder="Climbrun" min="10" max="40" type="number" step="5"
-                [status]="(addForm.get('hills').dirty || addForm.get('hills').touched)? 
-                (addForm.get('hills').valid && addForm.getError('matchError')? 'danger': 'success') 
-                : 'primary'" >
-              </label>
-            
-              <label class="content">
-                <input nbInput formControlName="flatrun"  min="10" max="40" type="number" step="5"
-                [status]="(addForm.get('hills').dirty || addForm.get('hills').touched)? 
-                (addForm.get('hills').valid && addForm.getError('matchError')? 'danger': 'success') 
-                : 'primary'" >
-              </label>
-            
-              <label class="content">
-                <input nbInput formControlName="mud" placeholder="Mud" min="10" max="40" type="number" step="5"
-                [status]="(addForm.get('hills').dirty || addForm.get('hills').touched)? 
-                (addForm.get('hills').valid && addForm.getError('matchError')? 'danger': 'success') 
-                : 'primary'" >
-              </label>
-            
-              <label class="content">
-                <input nbInput formControlName="planks" placeholder="Planks" min="10" max="40" type="number" step="5"
-                [status]="(addForm.get('hills').dirty || addForm.get('hills').touched)? 
-                (addForm.get('hills').valid && addForm.getError('matchError')? 'danger': 'success') 
-                : 'primary'" >
-              </label>
-            
-              <label class="content">
-                <input nbInput formControlName="sand" placeholder="Sand" min="10" max="40" type="number" step="5"
-                [status]="(addForm.get('hills').dirty || addForm.get('hills').touched)? 
-                (addForm.get('hills').valid && addForm.getError('matchError')? 'danger': 'success') 
-                : 'primary'" >
-              </label>
-            
-              <label class="content">
-                <input nbInput formControlName="soil" placeholder="Soil" min="10" max="40" type="number" step="5"
-                [status]="(addForm.get('hills').dirty || addForm.get('hills').touched)? 
-                (addForm.get('hills').valid && addForm.getError('matchError')? 'danger': 'success') 
-                : 'primary'" >
-              </label>
-            
-              <label class="content">
-                <input nbInput formControlName="stairs" placeholder="Stairs" min="10" max="40" type="number" step="5"
-                [status]="(addForm.get('hills').dirty || addForm.get('hills').touched)? 
-                (addForm.get('hills').valid && addForm.getError('matchError')? 'danger': 'success') 
-                : 'primary'" >
-              </label>
+            <label class="content">
+              Climbs :
+              <input nbInput formControlName="climb" placeholder="Climb" min="10" max="40" type="number" step="5"
+              [status]="(addForm.get('hills').dirty || addForm.get('hills').touched)? 
+              (addForm.get('hills').valid && addForm.getError('matchError')? 'danger': 'success') 
+              : 'primary'" >
+            </label>
+          
+            <label class="content">
+              Run on climbs :
+              <input nbInput formControlName="climbrun" placeholder="Climbrun" min="10" max="40" type="number" step="5"
+              [status]="(addForm.get('hills').dirty || addForm.get('hills').touched)? 
+              (addForm.get('hills').valid && addForm.getError('matchError')? 'danger': 'success') 
+              : 'primary'" >
+            </label>
+          
+            <label class="content">
+              Run on flat sections :
+              <input nbInput formControlName="flatrun"  min="10" max="40" type="number" step="5"
+              [status]="(addForm.get('hills').dirty || addForm.get('hills').touched)? 
+              (addForm.get('hills').valid && addForm.getError('matchError')? 'danger': 'success') 
+              : 'primary'" >
+            </label>
+          
+            <label class="content">
+              Mud :
+              <input nbInput formControlName="mud" placeholder="Mud" min="10" max="40" type="number" step="5"
+              [status]="(addForm.get('hills').dirty || addForm.get('hills').touched)? 
+              (addForm.get('hills').valid && addForm.getError('matchError')? 'danger': 'success') 
+              : 'primary'" >
+            </label>
+          
+            <label class="content">
+              Planks :
+              <input nbInput formControlName="planks" placeholder="Planks" min="10" max="40" type="number" step="5"
+              [status]="(addForm.get('hills').dirty || addForm.get('hills').touched)? 
+              (addForm.get('hills').valid && addForm.getError('matchError')? 'danger': 'success') 
+              : 'primary'" >
+            </label>
+          
+            <label class="content">
+              Sand :
+              <input nbInput formControlName="sand" placeholder="Sand" min="10" max="40" type="number" step="5"
+              [status]="(addForm.get('hills').dirty || addForm.get('hills').touched)? 
+              (addForm.get('hills').valid && addForm.getError('matchError')? 'danger': 'success') 
+              : 'primary'" >
+            </label>
+          
+            <label class="content">
+              Soil :
+              <input nbInput formControlName="soil" placeholder="Soil" min="10" max="40" type="number" step="5"
+              [status]="(addForm.get('hills').dirty || addForm.get('hills').touched)? 
+              (addForm.get('hills').valid && addForm.getError('matchError')? 'danger': 'success') 
+              : 'primary'" >
+            </label>
+          
+            <label class="content">
+              Stairs :
+              <input nbInput formControlName="stairs" placeholder="Stairs" min="10" max="40" type="number" step="5"
+              [status]="(addForm.get('hills').dirty || addForm.get('hills').touched)? 
+              (addForm.get('hills').valid && addForm.getError('matchError')? 'danger': 'success') 
+              : 'primary'" >
+            </label>
         </nb-card-body>
     </nb-card>
     

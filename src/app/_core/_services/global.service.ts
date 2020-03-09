@@ -47,11 +47,11 @@ export class GlobalService {
     {
       const decoded = jwt_decode(token);
       let id = this.securityService.refreshUser(decoded.sub).subscribe(user => {
+        this._user$.next(user);
         this.cyclistService.setUser(user);
         this.cyclistService.refresh();
         this.cyclistService.context$.subscribe(data => {
           this._userCyclists$.next(data);
-          this._user$.next(user);
           if(data.length > 0){
             this._selectedCyclist.next(data[0]);
           }
@@ -74,9 +74,9 @@ export class GlobalService {
       this.securityService.refreshUser(decoded.sub).subscribe(user => {
         this.cyclistService.setUser(user);
         this.cyclistService.refresh();
+        this._user$.next(user);
         this.cyclistService.context$.subscribe(data => {
           this._userCyclists$.next(data);
-          this._user$.next(user);
           this.router.navigateByUrl('cyclist/details');
         })
       })

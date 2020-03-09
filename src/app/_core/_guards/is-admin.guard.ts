@@ -14,7 +14,6 @@ export class IsAdminGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      console.log("coucou");
       let token = localStorage.getItem('TOKEN');
       if(token){
         let decoded = jwt_decode(token); 
