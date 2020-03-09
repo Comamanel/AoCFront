@@ -36,18 +36,19 @@ export class NavComponent implements OnInit {
               this._listItems = [
                 { title: 'Coureur', children: [
                   { title: 'Details', link: '/cyclist/details' },
-                  /*{ title: 'Entrainement', link: '/cyclist/training' },
-                  { title: 'Inscriptions', link: '/cyclist/registrations' }*/
+                  //{ title: 'Entrainement', link: '/cyclist/training' },
+                  //{ title: 'Inscriptions', link: '/cyclist/registrations' }*/
                 ]},
-                /*{ title: 'Management', children: [
-                  { title: 'Materiel', link: '/management/equipment' },
-                  { title: 'Staff', link: '/management/staff' }
+                { title: 'Management', children: [
+                  //{ title: 'Materiel', link: '/management/equipment' },
+                  //{ title: 'Staff', link: '/management/staff' }
                 ]},
                 { title: 'Courses', children: [
-                  { title: 'Resultats', link: '/races/results' },
-                  { title: 'Simulations', link: '/races/simulation' }
+                  { title: 'Calendrier', link: '/races/list' },
+                  //{ title: 'Resultats', link: '/races/results' },
+                  //{ title: 'Simulations', link: '/races/simulation' }
                 ]},
-                { title: 'Admin Panel', link: '/admin' },*/
+                //{ title: 'Admin Panel', link: '/admin' },
                 { title: 'Logout', link: '/security/logout' },
               ];
 
