@@ -9,7 +9,7 @@ export class AgeFormatterPipe implements PipeTransform {
   transform(value: Age, ...args: any[]): any {
     if(value == null)
       return '';
-    return value.years + ' years, ' + value.month + ' month and ' + value.days + ' days old.';
+    return value.years + ' years and ' + value.days.toFixed(0) + ' days old.';
   }
  
 }

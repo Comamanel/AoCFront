@@ -6,16 +6,16 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class CaracteristicColorPipe implements PipeTransform {
 
   transform(value: number, ...args: unknown[]): string {
-    if(value >= 9.5)
+    if(value >= 95)
       return 'orangeRed';
       
-    if(value >= 8.5)
+    if(value >= 85)
       return 'green';
     
-    if(value >= 7.5)
+    if(value >= 70)
       return 'yellow';
 
-    if(value >= 6.0){
+    if(value >= 50){
       return 'lightGreen';
     }
       

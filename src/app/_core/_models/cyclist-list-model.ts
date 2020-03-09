@@ -23,6 +23,5 @@ interface Skill {
 
 export interface Age {
   years: number;
-  month: number;
   days: number;
 }
